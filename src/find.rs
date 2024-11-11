@@ -8,11 +8,10 @@ use std::path;
 /// * `pattern` - Which pattern to use
 /// * `base_dir` - flavours' base data dir
 /// * `config_dir` - flavours' config dir
-pub fn find_schemes(pattern: &str, base_dir: &Path, config_dir: &Path) -> Result<Vec<PathBuf>> {
+pub fn find_schemes(pattern: &str, config_dir: &Path) -> Result<Vec<PathBuf>> {
     let config_scheme_dir = config_dir.join("schemes");
-    let data_scheme_dir = base_dir.join("base16").join("schemes");
 
-    let dirs = [config_scheme_dir, data_scheme_dir];
+    let dirs = [config_scheme_dir];
     let dirs = dirs.iter().filter_map(|dir| dir.to_str());
 
     let mut found = Vec::new();

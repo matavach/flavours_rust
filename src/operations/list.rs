@@ -19,7 +19,7 @@ pub fn list(
 ) -> Result<()> {
     let mut schemes = Vec::new();
     for pattern in patterns {
-        let found_schemes = find_schemes(pattern, base_dir, config_dir)?;
+        let found_schemes = find_schemes(pattern, config_dir)?;
 
         for found_scheme in found_schemes {
             schemes.push(String::from(

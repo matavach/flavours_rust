@@ -136,15 +136,30 @@ fn main() -> Result<()> {
         }
 
         Some(("update", sub_matches)) => {
-            let operation = sub_matches
-                .value_of("operation")
-                .ok_or_else(|| anyhow!("Invalid operation"))?;
-            update::update(
-                operation,
-                &flavours_dir,
-                verbose,
-                &flavours_config
-            )
+            let patterns = match sub_matches.values_of("pattern") {
+                Some(content) => content.collect(),
+                //Defaults to wildcard
+                None => vec!["*"],
+            };
+            let lines = sub_matches.is_present("lines");
+
+            if sub_matches.is_present("templates") {
+                list_templates::list(
+                    patterns,
+                    &flavours_dir,
+                    &flavours_config_dir,
+                    verbose,
+                    lines,
+                )
+            } else {
+                list::list(
+                    patterns,
+                    &flavours_dir,
+                    &flavours_config_dir,
+                    verbose,
+                    lines,
+                )
+            }
         }
 
         Some(("info", sub_matches)) => {

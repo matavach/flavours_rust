@@ -45,8 +45,8 @@ fn write_sources(s_repo: &str, t_repo: &str, file: &Path) -> Result<()> {
 ///* `file` - Path to sources file
 fn get_sources(file: &Path, config: &Config) -> Result<(String, String)> {
     // Default repos
-    let default_s_repo = "https://github.com/chriskempson/base16-schemes-source.git";
-    let default_t_repo = "https://github.com/chriskempson/base16-templates-source.git";
+    let default_s_repo = "https://github.com/matavach/base16-schemes-source.git";
+    let default_t_repo = "https://github.com/matavach/base16-templates-source.git";
     
     // config source indicators
     let use_config_sources = config.schemes.is_some();

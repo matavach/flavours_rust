@@ -79,7 +79,7 @@ pub fn print_color_rgb(color: RgbColor) -> Result<()> {
 pub fn info(patterns: Vec<&str>, base_dir: &Path, config_dir: &Path, raw: bool) -> Result<()> {
     let mut schemes = Vec::new();
     for pattern in patterns {
-        let found_schemes = find_schemes(pattern, base_dir, config_dir)?;
+        let found_schemes = find_schemes(pattern, config_dir)?;
 
         schemes.extend_from_slice(&found_schemes)
     }
